@@ -1,0 +1,1777 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor-primaria: #4C689A;
+    --cor-secundaria: #72C9A9;
+    --cor-bg-card: rgba(230, 234, 232, 0.80);
+    --dark: #2B2B2B;
+    --dark-60: rgba(43, 43, 43, 0.6);
+    --light: #EDEDED;
+    --card-max: 270px;
+    --gap: 20px;
+    --line-h: 3px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+}
+
+@font-face {
+    font-family: 'Margin';
+    src: url('/assets/margin.woff2') format('woff2');
+}
+
+.dobra {
+    padding: 60px 0;
+}
+
+
+.left {
+    flex: 1 1 calc(50% - 30px);
+    /* 40% descontando metade do gap */
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.right {
+    flex: 1 1 calc(50% - 30px);
+    /* 40% descontando metade do gap */
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    font-family: "Margin", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0;
+    line-height: 0.9;
+}
+
+h3 {
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.balance {
+    text-wrap: balance;
+}
+
+p {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.01rem;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.hero {
+    margin: 0 auto;
+    width: 100%;
+    background: linear-gradient(100deg, #4C689A 1.46%, #6DC8A9 30.04%, #6DC8A9 65.8%);
+    border-radius: 0 0 200px 200px;
+}
+
+.hero::before {
+    content: "";
+    width: 100%;
+    height: 80vh;
+    opacity: 0.2;
+    background-image: url('./assets/ruido.webp');
+    /* background-image: url('/assets/ruidoanimado.gif');
+    background-size: 100px;
+    background-repeat: repeat; */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: color-burn;
+    border-radius: 0 0 200px 200px;
+}
+
+
+.hero-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-hero {
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.hero-container h2 {
+    margin: 0;
+    padding-top: 40px;
+    font-size: 2.6rem;
+    line-height: 1;
+    flex: 1;
+    color: var(--dark);
+    /* text-wrap: balance; */
+
+}
+
+.patrocinadores {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.patrocinadores h3 {
+    margin: 0;
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: var(--dark);
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.01rem;
+}
+
+.patrocinadores-logos {
+    display: flex;
+    margin: 0;
+    gap: 30px;
+    width: 393px;
+    justify-content: end;
+}
+
+.patrocinadores-logos img {
+    width: auto;
+    height: 60px;
+}
+
+/* Container Principal - Max Width 1200px */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+/* --- Objetivos Coluna Esquerda (40%) --- */
+.left-column {
+    flex: 1 1 calc(50% - 30px);
+    /* 40% descontando metade do gap */
+    min-width: 320px;
+    background-color: var(--cor-bg-card);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    height: 750px;
+    box-sizing: content-box;
+    position: relative;
+}
+
+.left-column::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-image: url('/assets/ruido.webp');
+    background-repeat: repeat;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    mix-blend-mode: color-burn;
+    border-radius: 20px;
+}
+
+.objetivos-header {
+    padding: 60px 40px 20px 40px;
+}
+
+.objetivos-header h2 {
+    font-size: 2.4rem;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.objetivos-header p {
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+.objetivos-imagem-wrapper {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+
+}
+
+.objetivos-image {
+    width: 100%;
+    position: absolute;
+    left: -40px;
+
+}
+
+/* --- Objetivos Coluna Direita (60%) --- */
+.right-column {
+    flex: 1 1 calc(50% - 30px);
+    /* 60% descontando metade do gap */
+    min-width: 320px;
+    display: flex;
+    align-items: center;
+}
+
+/* Objetivos Grid interno para os 4 cards (2 colunas) */
+.objetivos-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+}
+
+.objetivos-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-wrapper {
+    margin-bottom: 16px;
+    height: 80px;
+}
+
+.icon-wrapper img {
+    height: 100%;
+    object-fit: contain;
+    margin: 0;
+}
+
+.objetivos-card h3 {
+    color: var(--dark);
+    margin-bottom: 8px;
+    text-wrap: balance;
+}
+
+.objetivos-card p {
+    font-size: 1rem;
+    color: var(--dark);
+}
+
+.title h2 {
+    font-size: 4rem;
+    color: var(--dark);
+    line-height: 0.7;
+    text-wrap: balance;
+}
+
+.title h3 {
+    font-family: "Margin", sans-serif;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--cor-primaria);
+}
+
+.panorama-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.panorama-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.panorama-card span {
+    font-family: "Margin", sans-serif;
+    font-weight: 500;
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--dark);
+}
+
+.panorama-card sub {
+    vertical-align: 2%;
+    /* Move para baixo em pixels */
+    font-size: 3rem;
+}
+
+.panorama-card h3 {
+    text-align: center;
+}
+
+/* --- Estilo sanfona --- */
+
+/* ─── SECTION WRAPPER ─── */
+.section-sanfona {
+    width: 100vw;
+}
+
+/* ─── TWO-COLUMN GRID ─── */
+.two-col {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+    background-color: var(--light);
+}
+
+/* ─── LEFT COLUMN – ACCORDION ─── */
+.col-left {
+    flex: 1 1 0;
+    padding: 8rem 6rem 8rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--cor-primaria);
+    border-radius: 150px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.col-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 400px;
+    /* ocupa a col inteira */
+    background-image: url('./assets/icon-atpbr.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+    bottom: 80%;
+    left: 60%;
+    pointer-events: none;
+}
+
+.col-left .section-label {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.01rem;
+    font-size: 1.1rem;
+    color: var(--light);
+    max-width: 850px;
+    margin: 2rem auto 0 auto;
+}
+
+/* ─── ACCORDION ─── */
+.accordion {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.accordion-item {
+    border: 2px solid var(--dark);
+    border-radius: 50px;
+    background-color: var(--light);
+    padding: 10px 40px;
+    overflow: hidden;
+
+}
+
+.accordion-item ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+.accordion-item:first-child {
+    border-top: 1px solid var(--dark);
+}
+
+.accordion-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1.25rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+    color: var(--dark);
+}
+
+.accordion-trigger h3 {
+    font-family: 'Margin', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    font-weight: 500;
+}
+
+/* ─── CUSTOM ICON ─── */
+.accordion-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* A rotação fica no wrapper para manter transform-origin central */
+    transition: transform 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.accordion-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: var(--dark);
+    transition: fill 0.3s ease;
+}
+
+/* Expandido: gira 45° e fica branco cheio */
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon svg {
+    fill: var(--cor-primaria);
+}
+
+/* ─── ACCORDION BODY ─── */
+.accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.38s cubic-bezier(.4, 0, .2, 1);
+}
+
+.accordion-body.open {
+    grid-template-rows: 1fr;
+}
+
+.accordion-body-inner {
+    overflow: hidden;
+}
+
+.accordion-body-inner p {
+    color: var(--dark);
+    padding-bottom: 1.75rem;
+    padding-right: 2.5rem;
+}
+
+/* ─── RIGHT COLUMN – IMAGE CARDS ─── */
+.col-right {
+    flex: 1 1 100%;
+    width: 450px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.img-card {
+    flex: 1 1 50%;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-card:nth-child(1) {
+    background-image: url('./assets/card-1.webp');
+    border-radius: 9rem 0 4rem 4rem;
+    overflow: hidden;
+}
+
+.img-card:nth-child(1)::before {
+    background-image: url('./assets/icon-atpbr.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: "";
+    inset: 0;
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: -10%;
+    left: -40%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.img-card:nth-child(2) {
+    background-image: url('./assets/card-2.webp');
+    border-radius: 4rem 4rem 4rem 9rem;
+    overflow: hidden;
+}
+
+.img-card:nth-child(2)::before {
+    background-image: url('./assets/icon-atpbr.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: "";
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: rotate(45deg);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ── SECTION SLIDER PACIENTE À DESCOBERTA CIENTÍFICA ── */
+.slider-section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+
+/* ── LINHA HORIZONTAL com degrade nas bordas ── */
+.slider-line {
+    position: absolute;
+    top: 38px;
+    /* centro do badge de 77px */
+    left: 0;
+    right: 0;
+    height: var(--line-h);
+    /* degrade: transparente até sair da zona das setas (90px), depois cor sólida */
+    background: linear-gradient(to right,
+            var(--light) 0px,
+            var(--light) 90px,
+            var(--cor-secundaria) 150px,
+            var(--cor-secundaria) calc(100% - 150px),
+            var(--light) calc(100% - 90px),
+            var(--light) 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ── WRAPPER GERAL: full width, acomoda setas nas bordas ── */
+.slider-wrapper {
+    width: 100%;
+    position: relative;
+    padding: 0 90px;
+    /* espaço para as setas absolutas */
+}
+
+/* ── INNER: limita os cards a 1200px centralizado ── */
+.slider-inner {
+    max-width: calc((var(--card-max) + var(--gap)) * 4);
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ── SETAS — absolutas nas extremidades da section ── */
+.arrow-btn {
+    position: absolute;
+    top: 8px;
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 66px;
+    height: 60px;
+    transition: opacity 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-btn svg {
+    width: 66px;
+    height: 60px;
+}
+
+.arrow-btn.left-btn {
+    left: 16px;
+}
+
+.arrow-btn.right-btn {
+    right: 0px;
+}
+
+.arrow-btn:disabled,
+.arrow-btn[disabled] {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── VIEWPORT (overflow hidden) ── */
+.slider-viewport {
+    overflow: hidden;
+    position: relative;
+}
+
+/* ── TRACK (todos os cards em linha) ── */
+.slider-track {
+    display: flex;
+    gap: var(--gap);
+    transition: transform 0.45s cubic-bezier(.4, 0, .2, 1);
+    align-items: flex-start;
+}
+
+/* ── CARD ── */
+.slide-card {
+    flex: 1 1 var(--card-max);
+    min-width: var(--card-max);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── NÚMERO COM FUNDO SVG ── */
+.card-number-wrap {
+    position: relative;
+    width: 80px;
+    height: 77px;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.card-number-wrap .bg-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-number-wrap .num {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Margin', sans-serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--dark);
+}
+
+/* ── TEXTO DO CARD ── */
+.card-text {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.01rem;
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--dark);
+
+}
+
+/* ── SEÇÃO NOSSA EQUIPE ── */
+.equipe-section {
+    width: 100%;
+    position: relative;
+}
+
+/* Wrap natural: título + slider lado a lado, empilham quando não couber */
+.equipe-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    /* wrap automático */
+    align-items: center;
+    gap: var(--gap);
+}
+
+/* Coluna esquerda: título fixo */
+.equipe-title-col {
+    flex: 0 0 240px;
+    width: 240px;
+}
+
+.equipe-title-col h2 {
+    font-size: 4.5rem;
+    line-height: 0.88;
+    color: var(--dark);
+}
+
+/* Coluna direita: ocupa o resto, padding reserva espaço das setas */
+.equipe-slider-col {
+    flex: 1 1 400px;
+    /* wrap quando slider ficaria < 400px */
+    min-width: 0;
+    position: relative;
+    padding: 0 76px;
+}
+
+/* Viewport + track */
+.equipe-slider-col .slider-viewport {
+    overflow: hidden;
+}
+
+.equipe-slider-col .slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.45s cubic-bezier(.4, 0, .2, 1);
+    align-items: stretch;
+}
+
+/* ── CARD: JS controla a largura dinamicamente ── */
+.equipe-card {
+    flex: 0 0 auto;
+    /* JS define width e flex-basis */
+    background-color: var(--cor-bg-card);
+    border-radius: 2rem;
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Textura de ruído */
+.equipe-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image: url('./assets/ruido.webp');
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: color-burn;
+    border-radius: 2rem;
+}
+
+.equipe-card-icon {
+    position: relative;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.equipe-card-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--cor-secundaria);
+}
+
+.equipe-card h3 {
+    position: relative;
+    z-index: 1;
+    color: var(--dark);
+    font-size: 1.1rem;
+    line-height: 120%;
+    text-wrap: balance;
+    letter-spacing: 0.02rem;
+}
+
+/* ── SETAS: absolutas dentro do padding do equipe-slider-col ── */
+.equipe-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 66px;
+    height: 60px;
+    transition: opacity 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.equipe-arrow svg {
+    width: 66px;
+    height: 60px;
+}
+
+.equipe-arrow.left-btn {
+    left: 0;
+}
+
+.equipe-arrow.right-btn {
+    right: 0;
+}
+
+.equipe-arrow:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── SEÇÃO ── */
+.pub-section {
+    width: 100%;
+    padding: 60px 0;
+}
+
+.pub-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Cabeçalho título + setas */
+.pub-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.pub-header h2 {
+    font-size: 4rem;
+    line-height: 0.9;
+    color: var(--dark);
+}
+
+.pub-arrows {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.pub-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 66px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease;
+    flex-shrink: 0;
+}
+
+.pub-arrow svg {
+    width: 66px;
+    height: 60px;
+}
+
+.pub-arrow:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Slider */
+.pub-slider-wrap {
+    width: 100%;
+}
+
+.pub-slider-wrap .slider-viewport {
+    overflow: hidden;
+}
+
+.pub-slider-wrap .slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.45s cubic-bezier(.4, 0, .2, 1);
+    align-items: stretch;
+}
+
+/* Card */
+.pub-card {
+    flex: 0 0 auto;
+    border: 2px solid rgba(43, 43, 43, 0.15);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.pub-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.pub-date {
+    font-family: "Nunito", sans-serif;
+    font-size: 0.85rem;
+    color: var(--dark-60);
+    font-weight: 400;
+}
+
+.pub-source {
+    font-family: "Nunito", sans-serif;
+    font-size: 0.95rem;
+    color: var(--dark-60);
+    font-weight: 700;
+}
+
+.pub-title {
+    font-family: "Margin", sans-serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 0.9;
+    color: var(--cor-primaria);
+    text-wrap: pretty;
+}
+
+.pub-authors {
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark-60);
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.pub-btn {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 0.45rem 1.4rem;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 50px;
+    font-family: "Margin", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--cor-primaria);
+    letter-spacing: 0.05rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pub-btn:hover {
+    background-color: var(--cor-primaria);
+    color: var(--light);
+}
+
+.cta-section {
+    width: 100%;
+}
+
+/* Container: 2 colunas, wrap abaixo de 600px mínimo por card */
+.cta-grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* ── CARD ── */
+.cta-card {
+    flex: 1 1 500px;
+    /* encolhe até 500px, depois wrapa */
+    min-width: 0;
+    border-radius: 3rem;
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* centraliza o conteúdo horizontalmente */
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+}
+
+.cta-card.verde {
+    background-color: var(--cor-secundaria);
+}
+
+.cta-card.azul {
+    background-color: var(--cor-primaria);
+}
+
+/* ── DIV INTERNA: centralizada no card, conteúdo alinhado à esquerda ── */
+.cta-content {
+    width: 100%;
+    max-width: 480px;
+    /* largura máxima da coluna de conteúdo */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    flex: 1;
+    /* ocupa o espaço disponível empurrando botão para baixo */
+    position: relative;
+    z-index: 1;
+}
+
+/* ── TÍTULO ── */
+.cta-card h2 {
+    font-family: 'Margin', sans-serif;
+    font-size: 4.8rem;
+    line-height: 0.95;
+    letter-spacing: 0.03rem;
+}
+
+.cta-card.verde h2 {
+    color: var(--dark);
+}
+
+.cta-card.azul h2 {
+    color: var(--light);
+}
+
+/* ── PARÁGRAFO ── */
+.cta-card p {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.01rem;
+    padding-bottom: 20px;
+    text-wrap: balance;
+}
+
+.cta-card.verde p {
+    color: var(--dark);
+}
+
+.cta-card.azul p {
+    color: var(--light);
+}
+
+/* ── BOTÃO ORGÂNICO ── */
+.cta-btn-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    /* alinha com o .cta-content */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* botão alinhado à esquerda */
+}
+
+.cta-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: none;
+    /* tamanho proporcional ao SVG (559×330) */
+    width: min(420px, 90%);
+    aspect-ratio: 559 / 330;
+    transition: transform 0.2s ease;
+}
+
+.cta-btn:hover {
+    transform: scale(1.03);
+}
+
+.cta-btn:active {
+    transform: scale(0.98);
+}
+
+/* Camada de sombra — deslocada para baixo/direita */
+.cta-btn-shadow,
+.cta-btn-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cta-btn-shadow {
+    transform: translate(10px, 14px);
+    z-index: 0;
+}
+
+.cta-btn-shadow path {
+    fill: var(--dark);
+}
+
+.cta-btn-face {
+    z-index: 1;
+}
+
+.cta-btn-face path {
+    fill: var(--light);
+}
+
+/* Texto sobre o botão */
+.cta-btn-label {
+    position: relative;
+    z-index: 2;
+    font-family: 'Margin', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    color: var(--dark);
+    letter-spacing: 0.01em;
+    text-align: center;
+    pointer-events: none;
+    left: 20px;
+    padding-bottom: 0.5rem;
+    /* compensação visual da assimetria do SVG */
+}
+
+.site-footer {
+    width: 100%;
+    background-color: var(--cor-primaria);
+    padding: 1rem 2rem;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-copy {
+    font-family: "Nunito", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--light);
+    margin: 0;
+    letter-spacing: 0.01rem;
+}
+
+.footer-insta {
+    color: var(--light);
+    opacity: 0.75;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+}
+
+
+/* ── HEADER ── */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.8rem;
+}
+
+/* ── CTAs PILL ── */
+.header-cta {
+    font-family: 'Margin', sans-serif;
+    font-size: 1.8rem;
+    color: var(--dark);
+    background: var(--light);
+    border: 2px solid var(--dark);
+    border-radius: 999px;
+    padding: 0.5rem 1.4rem;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-cta:hover {
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+/* ── INSTAGRAM ── */
+.header-icon-btn {
+    background: var(--light);
+    border: 2px solid var(--dark);
+    border-radius: 10px;
+    padding: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--dark);
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-icon-btn:hover {
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.header-icon-btn svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* ── IDIOMA ── */
+.header-lang {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--dark);
+    background: var(--light);
+    border: 2px solid var(--dark);
+    border-radius: 10px;
+    padding: 7px 0.7rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-lang:hover {
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.header-lang svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* ── HAMBURGUER — mesmo estilo do botão do instagram ── */
+.header-hamburger {
+    display: none;
+    background: var(--light);
+    border: 2px solid var(--dark);
+    border-radius: 10px;
+    padding: 7px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--dark);
+    flex-shrink: 0;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-hamburger:hover {
+    background: var(--dark);
+    color: var(--light);
+    border-color: var(--dark);
+}
+
+/* Ícone hamburguer/X: 24px — igual ao instagram */
+.header-hamburger svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Toggle ☰ ↔ × */
+.header-hamburger .icon-hamburger {
+    display: block;
+}
+
+.header-hamburger .icon-close {
+    display: none;
+}
+
+.header-hamburger.active .icon-hamburger {
+    display: none;
+}
+
+.header-hamburger.active .icon-close {
+    display: block;
+}
+
+/* ── POPUP MOBILE ── */
+.header-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgb(76, 104, 154, 0.8);
+    backdrop-filter: blur(8px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    padding: 2rem;
+}
+
+.header-popup.open {
+    display: flex;
+}
+
+/* CTAs do popup */
+.popup-cta {
+    font-family: 'Margin', sans-serif;
+    font-size: 2rem;
+    color: var(--dark);
+    background: var(--light);
+    border: 2px solid var(--dark);
+    border-radius: 999px;
+    padding: 0.6rem 2.5rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.popup-cta:hover {
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+/* ── RESPONSIVO ── */
+
+/* --- Quando a tela for menor que 900px, as colunas de 40/60 empilham (ficam 100%) --- */
+@media (max-width: 1024px) {
+    .col-right {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: row;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+    .site-header {
+        height: 80px;
+    }
+
+    .header-inner {
+        padding: 20px;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    .header-hamburger {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        gap: 30px;
+    }
+
+    .left-column,
+    .right-column {
+        flex: 1 1 100%;
+        /* Força as colunas a ocuparem 100% da largura */
+    }
+
+}
+
+/* --- Quando a tela for menor que 600px (Mobile), os cards da direita empilham em 1 coluna --- */
+@media (max-width: 600px) {
+    .objetivos-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panorama-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .objetivos-header {
+        padding: 30px 20px 10px 20px;
+    }
+}
+
+/* --- SANFONA --- */
+
+@media (max-width: 768px) {
+    .col-left {
+        flex: 1 1 100%;
+        width: 100%;
+        padding: 4rem 1.5rem;
+        border-radius: 60px;
+    }
+
+    .img-card {
+        flex: 1 1 50%;
+        min-height: 420px;
+    }
+
+    .img-card:nth-child(1) {
+        border-radius: 100px 10px 4rem 10px;
+    }
+
+    .img-card:nth-child(2) {
+        border-radius: 10px 100px 10px 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        border-radius: 0 0 100px 100px;
+    }
+
+    .hero-container {
+        padding: 7rem 1.2rem 7rem 1.2rem;
+        height: auto;
+
+    }
+
+    .logo-hero {
+        width: 90%;
+        height: auto;
+    }
+
+    .hero-container h2 {
+        padding: 0 0 0 15px;
+        font-size: 2.2rem;
+        text-wrap: balance;
+        letter-spacing: 0.01rem;
+
+    }
+
+    .patrocinadores {
+        padding: 60px 10px 60PX 20px;
+        height: auto;
+    }
+
+
+    .patrocinadores h3 {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .patrocinadores-logos img {
+    width: auto;
+    height: 50px;
+}
+
+    .left-column {
+    height: 750px;
+}
+
+    .right-column {
+        padding: 40px 40px 20px 40px;
+}
+
+.dobra {
+    padding: 20px 30px;
+}
+
+.dobra + .section-sanfona {
+    padding: 20px 0;
+}
+
+.title h3 {
+    font-size: 2rem;
+    letter-spacing: 0.01rem;
+    text-wrap: pretty;
+}
+
+.right p {
+    font-size: 1.18rem;
+}
+
+.objetivos-header {
+    padding: 60px 40px 20px 40px;
+}
+
+.accordion-item {
+    padding: 10px 10px 10px 20px;
+
+}
+
+    .accordion-trigger h3 {
+        font-family: 'Margin', sans-serif;
+        font-size: 1.8rem;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        font-weight: 500;
+    }
+
+    .accordion-body-inner p {
+        font-size: 1rem;
+        padding-right: 8px;
+        text-wrap: balance;
+}
+
+.col-left .section-label {
+    font-size: 1rem;
+}
+
+    .col-right {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .img-card {
+        flex: 1 1 100%;
+        min-height: 120px;
+    }
+    
+}
+
+
+/* ── RESPONSIVO SLIDE DO PACIENTE À DESCOBERTA CIENTÍFICA ── */
+
+/* Tablet: 2 cards visíveis */
+@media (max-width: 900px) {
+    .slider-wrapper {
+        padding: 0 66px;
+    }
+
+    .arrow-btn {
+        width: 50px;
+        height: 46px;
+        top: 15px;
+    }
+
+    .arrow-btn svg {
+        width: 50px;
+        height: 46px;
+    }
+
+    .arrow-btn.left-btn {
+        left: 8px;
+    }
+
+    .arrow-btn.right-btn {
+        right: 8px;
+    }
+
+    .slider-line {
+        background: linear-gradient(to right,
+                var(--light) 0px,
+                var(--light) 58px,
+                var(--cor-secundaria) 90px,
+                var(--cor-secundaria) calc(100% - 90px),
+                var(--light) calc(100% - 58px),
+                var(--light) 100%);
+    }
+}
+
+/* Mobile: 1 card visível */
+@media (max-width: 520px) {
+    .slider-wrapper {
+        padding: 0 50px;
+    }
+
+    .arrow-btn {
+        width: 40px;
+        height: 36px;
+        top: 20px;
+    }
+
+    .arrow-btn svg {
+        width: 40px;
+        height: 36px;
+    }
+
+    .arrow-btn.left-btn {
+        left: 4px;
+    }
+
+    .arrow-btn.right-btn {
+        right: 5px;
+    }
+
+}
+
+/* Quando o slider-col wrap (flex: 1 1 400px não cabe),
+           título ocupa linha inteira e slider vira 100%. */
+@media (max-width: 720px) {
+    .equipe-title-col {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .equipe-title-col h2 {
+        font-size: 4rem;
+    }
+
+    .equipe-slider-col {
+        flex: 0 0 100%;
+        padding: 0 60px;
+    }
+
+    .equipe-arrow {
+        width: 50px;
+        height: 46px;
+    }
+
+    .equipe-arrow svg {
+        width: 50px;
+        height: 46px;
+    }
+}
+
+@media (max-width: 480px) {
+    .equipe-inner {
+    padding: 0 ;
+}
+
+    .equipe-title-col h2 {
+        font-size: 4rem;
+    }
+
+    .equipe-slider-col {
+        padding: 0 48px;
+    }
+
+    .equipe-arrow {
+        width: 40px;
+        height: 36px;
+    }
+
+    .equipe-arrow svg {
+        width: 40px;
+        height: 36px;
+    }
+}
+
+
+/* Responsivo Seção Publicações */
+@media (max-width: 768px) {
+    .pub-header h2 {
+        font-size: 3rem;
+    }
+
+    .pub-arrow {
+        width: 50px;
+        height: 46px;
+    }
+
+    .pub-arrow svg {
+        width: 50px;
+        height: 46px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pub-header h2 {
+        font-size: 3.6rem;
+        line-height: 80%;
+    }
+
+    .pub-arrow {
+        width: 40px;
+        height: 36px;
+    }
+
+    .pub-arrow svg {
+        width: 40px;
+        height: 36px;
+    }
+}
+
+
+/* ── RESPONSIVO Seção CTA ── */
+@media (max-width: 680px) {
+    .cta-card {
+        border-radius: 5rem;
+        padding: 4rem 2rem;
+        min-height: 400px;
+    }
+
+    .cta-card h2 {
+        font-size: 3.2rem;
+    }
+
+    .cta-btn-label {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-btn-label {
+        font-size: 1.6rem;
+    }
+}
+
+
+.footer-insta:hover {
+    opacity: 1;
+}
+
+/* Responsivo: seção cta empilha */
+@media (max-width: 600px) {
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+    }
+}
