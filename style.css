@@ -2638,33 +2638,6 @@ a.header-lang { text-decoration: none; }
     .cta-plataforma svg { display: none; }
 }
 
-/* ── Logos de financiadores e parceiros (faixa abaixo do topo e rodapé) ──
-   INCA, SUS e Ministério da Saúde eram uma imagem só e quebravam linha como um
-   bloco. Agora são três imagens, cada logo com a sua altura (mesmo tamanho
-   visual de antes), e a faixa se organiza assim:
-   telas largas: uma linha ao lado do texto; tablet: uma linha abaixo do texto;
-   celular: duas linhas centralizadas (Genomas · INCA · SUS / Ministério · CNPq). */
-.patrocinadores-logos img.logo-genomas { height: 54px; }
-.patrocinadores-logos img.logo-inca    { height: 30px; }
-.patrocinadores-logos img.logo-sus     { height: 33px; }
-.patrocinadores-logos img.logo-ms      { height: 36px; }
-.patrocinadores-logos img.logo-cnpq    { height: 32px; }
-.patrocinadores-logos img { max-width: none; width: auto; margin: 0; object-fit: contain; }
-@media (min-width: 1025px) {
-    .patrocinadores-logos { flex: 0 0 auto; flex-wrap: nowrap; gap: 28px; }
-}
-@media (max-width: 1024px) {
-    .patrocinadores-logos { gap: 18px 30px; }
-}
-@media (max-width: 600px) {
-    .patrocinadores-logos { justify-content: center; gap: 18px 24px; }
-    .patrocinadores-logos img.logo-genomas { height: 44px; }
-    .patrocinadores-logos img.logo-inca    { height: 25px; }
-    .patrocinadores-logos img.logo-sus     { height: 28px; }
-    .patrocinadores-logos img.logo-ms      { height: 30px; }
-    .patrocinadores-logos img.logo-cnpq    { height: 28px; }
-}
-
 .footer-logos img.logo-genomas { height: 40px; }
 .footer-logos img.logo-inca    { height: 24px; }
 .footer-logos img.logo-sus     { height: 27px; }
@@ -2679,25 +2652,21 @@ a.header-lang { text-decoration: none; }
     .footer-logos img.logo-cnpq    { height: 26px; }
 }
 @media (max-width: 680px) {
-    /* quebra fixa depois do SUS (até 680px: abaixo de ~650px os cinco não cabem numa linha): o ::after ocupa uma linha inteira de altura zero
-       (por isso o espaço entre linhas é metade: ele conta duas vezes) */
-    .patrocinadores-logos, .footer-logos { row-gap: 9px; }
-    .patrocinadores-logos::after, .footer-logos::after { content: ""; flex-basis: 100%; height: 0; order: 1; }
-    .patrocinadores-logos img.logo-ms, .patrocinadores-logos img.logo-cnpq,
-    .footer-logos img.logo-ms, .footer-logos img.logo-cnpq { order: 2; }
+    /* quebra fixa no rodapé (até 680px os seis não cabem numa linha): INCA · INCT em cima,
+       SUS · Ministério no meio e o bloco "Apoio e fomento" (Genomas · CNPq) embaixo. O ::after e o
+       ::before ocupam uma linha inteira de altura zero (por isso o espaço entre linhas é metade:
+       cada quebra conta duas vezes) */
+    .footer-logos { row-gap: 9px; }
+    .footer-logos::after { content: ""; flex-basis: 100%; height: 0; order: 1; }
+    .footer-logos::before { content: ""; flex-basis: 100%; height: 0; order: 3; }
+    .footer-logos .lk-sus, .footer-logos .lk-ms { order: 2; }
+    .footer-logos .footer-apoio { order: 4; }
 }
 
 /* ── Celular: logos maiores e cards do "Participe" alinhados ──
    As alturas acompanham a largura da tela (vw) até um teto, para as duas
    linhas de logos caberem até em 320px. */
 @media (max-width: 680px) {
-    .patrocinadores-logos { gap: 9px 22px; }
-    .patrocinadores-logos img.logo-genomas { height: min(58px, 15vw); }
-    .patrocinadores-logos img.logo-inca    { height: min(36px, 9.4vw); }
-    .patrocinadores-logos img.logo-sus     { height: min(40px, 10.4vw); }
-    .patrocinadores-logos img.logo-ms      { height: min(44px, 11.4vw); }
-    .patrocinadores-logos img.logo-cnpq    { height: min(42px, 11vw); }
-
     .footer-logos { gap: 9px 20px; }
     .footer-logos img.logo-genomas { height: min(50px, 13vw); }
     .footer-logos img.logo-inca    { height: min(31px, 8.2vw); }
@@ -2712,9 +2681,6 @@ a.header-lang { text-decoration: none; }
 }
 /* calibrado para caber em 320px: faixa com 265px úteis, rodapé (caixa branca) com 209px */
 @media (max-width: 680px) {
-    .patrocinadores-logos img.logo-ms      { height: min(44px, 10.2vw); }
-    .patrocinadores-logos img.logo-cnpq    { height: min(42px, 10vw); }
-
     .footer-logos { gap: 9px 16px; }
     .footer-logos img.logo-genomas { height: min(50px, 11vw); }
     .footer-logos img.logo-inca    { height: min(31px, 7vw); }
@@ -2728,3 +2694,224 @@ a.header-lang { text-decoration: none; }
 
 /* ── Mapa da rede em tela estreita: painel abaixo do mapa (rede.js) ── */
 .painel-abaixo .rede-inner > .rede-painel { margin-top: 0; }
+
+/* ── Logo do INCT no rodapé ──
+   A logo tem o nome do instituto em três linhas, por isso fica um pouco mais
+   alta que as outras para o emblema continuar legível. */
+.footer-logos img.logo-inct { height: 66px; }
+@media (max-width: 600px) {
+    .footer-logos img.logo-inct { height: min(56px, 13vw); }
+}
+
+/* ── Estrutura de gestão (governança): organograma recolhível ──
+   Gerado por scripts/governanca/gerar_governanca.py. Três níveis, cada um com o
+   rótulo à esquerda: deliberativas (CGN no topo, ligado ao CCP e ao CAD),
+   consultivas (CESP, SAB) e execução (Núcleo Executivo). Cada instância é um
+   <details>: fechado mostra a sigla e o nome numa linha só, para o organograma
+   inteiro caber baixo; aberto mostra a frase sobre o que faz. */
+.gov-section { width: 100%; }
+.gov-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.gov-header {
+    display: grid; grid-template-columns: minmax(300px, 5fr) 7fr;
+    gap: 1.2rem 60px; align-items: end; margin-bottom: 2.6rem;
+}
+.gov-header h2 { font-size: 4rem; line-height: .95; }
+.gov-intro p { line-height: 1.55; font-family: "Nunito", sans-serif; }
+.gov-link { display: inline-block; margin-top: .8rem; font-family: "Nunito", sans-serif; color: var(--cor-primaria); font-weight: 700; text-underline-offset: 3px; }
+
+.gov-org {
+    --gov-escuro: #1f3355; --gov-azul: #415d8e; --gov-verde: #22704f;
+    --gov-verde-claro: #d5dfdb; --gov-linha: #7088b0;
+    font-family: "Nunito", sans-serif; display: flex; flex-direction: column; gap: 26px;
+}
+.gov-consorcio {
+    margin: 0 0 4px; padding: .85rem 1.2rem; text-align: center;
+    border: 1.5px dashed #c5cede; border-radius: 999px;
+    font-size: .8rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--gov-azul);
+}
+.gov-nivel { display: grid; grid-template-columns: 170px 1fr; gap: 0 22px; align-items: start; }
+.gov-rotulo { margin: .9rem 0 0; display: flex; flex-direction: column; gap: .3rem; line-height: 1.35; }
+.gov-rotulo strong { font-size: .78rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; color: #4a5263; }
+.gov-rotulo span { font-size: .85rem; color: #6b7280; }
+.gov-blocos { min-width: 0; }
+.gov-par { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+
+/* liga o CGN ao CCP e ao CAD */
+.gov-conector { position: relative; height: 26px; }
+.gov-conector::before { content: ""; position: absolute; left: 50%; top: 0; height: 50%; border-left: 2px solid var(--gov-linha); }
+.gov-conector::after {
+    content: ""; position: absolute; left: calc(25% - 5px); right: calc(25% - 5px); top: 50%; bottom: 0;
+    border: 2px solid var(--gov-linha); border-bottom: 0; border-radius: 6px 6px 0 0;
+}
+
+.gov-card { border-radius: 1rem; background: var(--gov-azul); color: #fff; }
+.gov-card.gov-topo { background: var(--gov-escuro); }
+.gov-aconselha .gov-card { background: #fff; color: var(--gov-escuro); border: 1.5px solid #bfe6d6; }
+.gov-executa .gov-card { background: var(--gov-verde-claro); color: var(--gov-escuro); }
+
+.gov-card > summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; gap: .4rem .9rem;
+    padding: 1.05rem 1.4rem; border-radius: 1rem;
+}
+/* lado a lado, os cartões fechados ficam da mesma altura mesmo quando um nome quebra linha */
+.gov-par .gov-card > summary { min-height: 4.4rem; }
+.gov-card > summary::-webkit-details-marker { display: none; }
+.gov-card > summary:focus-visible { outline: 3px solid var(--cor-secundaria); outline-offset: 3px; }
+.gov-sigla { flex: none; font-size: 1.55rem; font-weight: 900; line-height: 1; color: #84bba8; }
+.gov-aconselha .gov-sigla { color: var(--gov-verde); }
+.gov-card h3 { flex: 1; margin: 0; font-family: "Nunito", sans-serif; font-size: 1rem; font-weight: 800; line-height: 1.3; color: inherit; }
+.gov-sufixo { white-space: nowrap; }
+/* seta que gira ao abrir */
+.gov-seta {
+    flex: none; align-self: center; width: .55rem; height: .55rem; margin-left: .3rem;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+    transform: translateY(-25%) rotate(45deg); opacity: .7; transition: transform .2s;
+}
+.gov-card[open] > summary .gov-seta { transform: translateY(25%) rotate(-135deg); }
+.gov-card > summary:hover .gov-seta { opacity: 1; }
+
+.gov-corpo { padding: 0 1.4rem 1.15rem; }
+.gov-faz { margin: 0; font-size: .95rem; line-height: 1.5; opacity: .82; }
+.gov-card { interpolate-size: allow-keywords; }
+.gov-card::details-content { block-size: 0; overflow: hidden; transition: block-size .25s ease, content-visibility .25s allow-discrete; }
+.gov-card[open]::details-content { block-size: auto; }
+@media (prefers-reduced-motion: reduce) { .gov-card::details-content { transition: none; } .gov-seta { transition: none; } }
+
+.gov-membros { margin-top: .6rem; font-size: .88rem; }
+.gov-membros summary { cursor: pointer; font-weight: 700; }
+.gov-membros ul { list-style: none; margin: .5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .35rem; }
+.gov-membros li strong { display: block; }
+
+.gov-dica { margin: -8px 0 0 192px; font-size: .85rem; color: #6b7280; }
+
+@media (max-width: 900px) {
+    .gov-header { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+    .gov-header h2 { font-size: 2.8rem; }
+    .gov-header { margin-bottom: 1.8rem; }
+    .gov-org { gap: 22px; }
+    .gov-consorcio { border-radius: 1rem; letter-spacing: .14em; font-size: .72rem; }
+    /* rótulo do nível em cima dos cartões, numa linha só */
+    .gov-nivel { grid-template-columns: 1fr; }
+    .gov-rotulo { margin: 0 0 .6rem; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: .2rem .6rem; }
+    .gov-par { grid-template-columns: 1fr; gap: 10px; }
+    /* árvore no celular: um tronco desce do CGN pela esquerda e solta um galho
+       para o CCP e outro para o CAD, que ficam recuados. Os galhos miram a linha
+       do título (summary), então continuam no lugar com o cartão aberto. */
+    .gov-conector { height: 10px; }
+    .gov-conector::after { display: none; }
+    .gov-conector::before { left: 18px; height: 100%; }
+    .gov-decide .gov-par { padding-left: 34px; }
+    .gov-decide .gov-par > .gov-card { position: relative; }
+    .gov-decide .gov-par > .gov-card::before {
+        content: ""; position: absolute; left: -16px; top: -10px; width: 14px; height: calc(10px + 2rem);
+        border-left: 2px solid var(--gov-linha); border-bottom: 2px solid var(--gov-linha); border-bottom-left-radius: 8px;
+    }
+    .gov-decide .gov-par > .gov-card:not(:last-child)::after {
+        content: ""; position: absolute; left: -16px; top: 1rem; bottom: -10px; border-left: 2px solid var(--gov-linha);
+    }
+    .gov-card > summary, .gov-par .gov-card > summary { padding: .9rem 1.1rem; min-height: 0; }
+    .gov-corpo { padding: 0 1.1rem 1rem; }
+    .gov-sigla { font-size: 1.3rem; min-width: 3.6rem; }
+    .gov-card h3 { font-size: .95rem; }
+    .gov-dica { margin: -6px 0 0; }
+}
+
+/* ── Faixa de financiadores e parceiros: texto em cima, esteira de logos embaixo ──
+   As logos deslizam devagar e sem parar dentro de uma pista branca. O trilho tem
+   o grupo de logos três vezes (um grupo sozinho é mais estreito que a pista em
+   telas largas); a animação anda um terço do trilho (um grupo) e recomeça, então
+   a emenda não aparece. Pausa ao passar o mouse; parada para quem
+   pediu menos movimento no sistema. Duplas fixas: INCA + INCT e SUS + Ministério. */
+.patrocinadores { flex-direction: column; align-items: center; gap: 30px; padding: 56px 20px; min-height: 0; }
+.patrocinadores-texto { flex: none; max-width: 52em; text-align: center; font-size: 1.15rem; line-height: 1.6; }
+.patrocinadores-esteira {
+    width: 100%; overflow: hidden; padding: 18px 0;
+    background: var(--branco); border-radius: 999px; box-shadow: var(--sombra);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.esteira-trilho { display: flex; width: max-content; animation: esteira-logos 40s linear infinite; }
+.patrocinadores-esteira:hover .esteira-trilho { animation-play-state: paused; }
+.esteira-grupo { display: flex; align-items: center; gap: 56px; padding-right: 56px; flex: none; }
+.esteira-item { display: flex; align-items: center; gap: 22px; flex: none; }
+.esteira-item img { display: block; width: auto; max-width: none; margin: 0; }
+.esteira-item img.logo-inca    { height: 32px; }
+.esteira-item img.logo-inct    { height: 66px; }
+.esteira-item img.logo-genomas { height: 52px; }
+.esteira-item img.logo-sus     { height: 34px; }
+.esteira-item img.logo-ms      { height: 38px; }
+.esteira-item img.logo-cnpq    { height: 34px; }
+.esteira-sep { color: var(--cor-secundaria); font-size: 1.1rem; line-height: 1; }
+@keyframes esteira-logos { to { transform: translateX(calc(-100% / 3)); } }
+@media (max-width: 600px) {
+    .patrocinadores { padding: 44px 16px; gap: 24px; }
+    .patrocinadores-texto { font-size: 1rem; }
+    .patrocinadores-esteira { padding: 12px 0; border-radius: 1.4rem; }
+    .esteira-trilho { animation-duration: 30s; }
+    .esteira-grupo { gap: 36px; padding-right: 36px; }
+    .esteira-item { gap: 16px; }
+    .esteira-item img.logo-inca    { height: 26px; }
+    .esteira-item img.logo-inct    { height: 54px; }
+    .esteira-item img.logo-genomas { height: 42px; }
+    .esteira-item img.logo-sus     { height: 28px; }
+    .esteira-item img.logo-ms      { height: 31px; }
+    .esteira-item img.logo-cnpq    { height: 28px; }
+}
+/* menos movimento: esteira parada, só o primeiro grupo, centralizado e quebrando linha */
+@media (prefers-reduced-motion: reduce) {
+    .patrocinadores-esteira { -webkit-mask-image: none; mask-image: none; border-radius: 1.4rem; padding: 18px 24px; }
+    .esteira-trilho { animation: none; width: auto; justify-content: center; }
+    .esteira-grupo { flex-wrap: wrap; justify-content: center; gap: 18px 40px; padding-right: 0; flex: 1; }
+    .esteira-grupo[aria-hidden="true"], .esteira-sep { display: none; }
+}
+
+/* logos com link (esteira e rodapé) */
+.footer-logos > a, .footer-logos > span { display: flex; align-items: center; }
+.footer-logos > a, .esteira-item a { border-radius: .5rem; transition: transform .2s, opacity .2s; }
+.footer-logos > a:hover, .esteira-item a:hover { transform: translateY(-2px); opacity: .85; }
+.footer-logos > a:focus-visible, .esteira-item a:focus-visible { outline: 3px solid var(--cor-secundaria); outline-offset: 4px; }
+.esteira-item a { display: flex; align-items: center; }
+.patrocinadores-esteira:focus-within .esteira-trilho { animation-play-state: paused; }
+
+/* ── Rodapé e esteira: bloco "Apoio e fomento" ──
+   Ordem das logos: INCA · INCT · SUS · Ministério | Apoio e fomento: Genomas Brasil · CNPq.
+   O rótulo fica à esquerda do bloco, separado das instituições por um fio vertical. */
+.footer-apoio { display: flex; align-items: center; gap: 22px 28px; padding-left: 44px; border-left: 1px solid #d5dbe3; }
+.footer-apoio > a { display: flex; align-items: center; border-radius: .5rem; transition: transform .2s, opacity .2s; }
+.footer-apoio > a:hover { transform: translateY(-2px); opacity: .85; }
+.footer-apoio > a:focus-visible { outline: 3px solid var(--cor-secundaria); outline-offset: 4px; }
+.apoio-rotulo, .esteira-apoio {
+    font-family: "Nunito", sans-serif; font-size: .72rem; font-weight: 600; line-height: 1.5;
+    letter-spacing: .2em; text-transform: uppercase; color: #6b7280; white-space: nowrap;
+}
+.esteira-item-apoio .esteira-apoio { padding-right: 4px; }
+@media (max-width: 680px) {
+    /* no celular o rótulo vai para cima das duas logos, numa linha só, sem o fio */
+    .footer-apoio { flex-wrap: wrap; justify-content: center; gap: 6px 16px; padding-left: 0; border-left: 0; }
+    .apoio-rotulo { flex-basis: 100%; text-align: center; font-size: .66rem; }
+    .apoio-rotulo br { display: none; }
+}
+
+/* ── Participe no celular: menos margem dos lados, cartões mais largos ──
+   (antes: 30px da seção + 20px da grade + 25px do cartão, e cantos de 80px) */
+@media (max-width: 600px) {
+    .cta-section.dobra { padding-left: 12px; padding-right: 12px; }
+    .participe-header { padding: 0 8px; }
+    .cta-section .cta-grid { padding: 0; gap: 14px; }
+    .cta-card { padding: 2.2rem 1.3rem 2rem; border-radius: 2rem; }
+    /* mesma folga para o organograma da governança, para os nomes não quebrarem em 3-4 linhas */
+    .gov-section.dobra { padding-left: 12px; padding-right: 12px; }
+    .gov-inner { padding: 0 8px; }
+    .gov-sigla { min-width: 3.3rem; }
+    .gov-card > summary, .gov-par .gov-card > summary { padding: .85rem 1rem; gap: .4rem .7rem; }
+}
+
+/* ── Sanfona (Cânceres incluídos, Genética da população...) no celular ──
+   antes: 30px da seção + 24px do painel azul + 20px do cartão, cantos de 50px */
+@media (max-width: 600px) {
+    .section-sanfona.dobra { padding-left: 12px; padding-right: 12px; }
+    .section-sanfona .col-left { padding: 40px 10px; border-radius: 2.4rem; }
+    .section-sanfona .accordion-item { padding: 8px 8px 8px 16px; border-radius: 2rem; }
+}
